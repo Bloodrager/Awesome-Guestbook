@@ -6,7 +6,7 @@ const VisitorManagement = () => {
   const columns: GridColDef[] = [
     {
       field: "name",
-      headerName: <strong>Visitor</strong>,
+      headerName: "Visitor",
       width: 500,
       sortable: false,
       headerAlign: "left",
@@ -14,7 +14,7 @@ const VisitorManagement = () => {
     },
     {
       field: "email",
-      headerName: <strong>Email</strong>,
+      headerName: "Email",
       width: 500,
       sortable: false,
       headerAlign: "left",
@@ -22,7 +22,7 @@ const VisitorManagement = () => {
     },
     {
       field: "select",
-      headerName: <strong>Department</strong>,
+      headerName: "Department",
       width: 330,
       sortable: false,
       headerAlign: "right",

@@ -11,10 +11,11 @@ import {
 } from "@mui/material";
 
 const UserInput = () => {
+
   return (
     <div className={classes.form}>
       <h1>Add new visitor</h1>
-      <FormControl className={classes.form}>
+      <FormControl className={classes.form}> 
         <TextField
           id="name"
           label="Full name"
@@ -34,7 +35,6 @@ const UserInput = () => {
           }}
         />
         <TextField
-          labelId="select-label"
           id="select"
           value={"Marketing"}
           select
