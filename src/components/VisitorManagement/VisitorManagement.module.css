@@ -1,0 +1,25 @@
+.content {
+  padding-left: 40px;
+  padding-top: 40px;
+}
+
+.heading {
+  padding-left: 15px;
+  padding-bottom: 20px;
+}
+
+.department {
+  background: gray;
+}
+
+.content h1 {
+  color: var(--text-primary, rgba(0, 0, 0, 0.87));
+  font-feature-settings: "clig" off, "liga" off;
+  font-family: Roboto;
+  font-size: 34px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 123.5%; /* 41.99px */
+  letter-spacing: 0.25px;
+  padding-bottom: 20px;
+}
