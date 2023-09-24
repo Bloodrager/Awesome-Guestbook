@@ -71,7 +71,7 @@ const VisitorManagement = (props) => {
           hideFooter
           onSelectionModelChange={(newSelection) => {
             setSelectedRows(newSelection);
-            console.log(newSelection); 
+            console.log(newSelection);
           }}
           key={props.rows.map((row) => row.id).join(",")}
         />

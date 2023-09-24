@@ -18,16 +18,17 @@ function App() {
     setUserData(updatedRows);
   };
 
-  const inputData = [];
-
   const handleAddUser = (newUser) => {
     if (newUser) {
       const name = newUser.name;
       const email = newUser.email;
       const field = newUser.field;
-  
+
       setUserData((prevData) => {
-        return [...prevData, { id: Math.random(), name: name, email: email, field: field }];
+        return [
+          ...prevData,
+          { id: Math.random(), name: name, email: email, field: field },
+        ];
       });
       setUserInput(null);
     }
@@ -38,7 +39,7 @@ function App() {
       <Header />
       <div style={{ display: "flex" }}>
         <UserInput onSubmit={dataHandler} />
-        <VisitorManagement rows={userData} onRemove={handleRemove}/>
+        <VisitorManagement rows={userData} onRemove={handleRemove} />
       </div>
     </div>
   );
