@@ -24,7 +24,7 @@ const VisitorManagement = (props) => {
       align: "left",
     },
     {
-      field: "select",
+      field: "field",
       headerName: "Department",
       width: 330,
       sortable: false,
