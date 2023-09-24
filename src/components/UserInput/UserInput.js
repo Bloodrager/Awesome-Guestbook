@@ -11,7 +11,7 @@ import {
   ButtonGroup,
 } from "@mui/material";
 
-const UserInput = () => {
+const UserInput = (props) => {
   const [userInput, setUserInput] = useState({
     name: "John",
     email: "john@mail.com",
@@ -20,8 +20,7 @@ const UserInput = () => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    console.log("SUBMIT");
-    //...todo
+    props.onSubmit(userInput);
   };
 
   const resetHandler = (event) => {
@@ -63,8 +62,9 @@ const UserInput = () => {
               inputChangeHandler("email", event.target.value)
             }
             value={userInput.email}
-            label="Email adress *"
+            label="Email adress"
             type="email"
+            required
             sx={{
               width: "400px",
             }}
@@ -100,6 +100,7 @@ const UserInput = () => {
           <FormControlLabel
             control={<Checkbox />}
             label="I agree to be added to the table"
+            required
           />
           <Stack spacing={2} direction="row">
             <Button
