@@ -2,36 +2,44 @@ import { useState } from "react";
 import Header from "./components/Header/Header";
 import UserInput from "./components/UserInput/UserInput";
 import VisitorManagement from "./components/VisitorManagement/VisitorManagement";
+import rows from "./rows";
 import "@fontsource/roboto/300.css";
 
 function App() {
   const [userInput, setUserInput] = useState(null);
+  const [userData, setUserData] = useState([...rows]);
 
   const dataHandler = (userInput) => {
     setUserInput(userInput);
   };
 
-  const userData = [];
+  const inputData = [];
 
   if (userInput) {
     const name = userInput.name;
     const email = userInput.email;
     const field = userInput.field;
 
-    userData.push({
+    inputData.push({
+      id: Math.random(),
       name: name,
       email: email,
       field: field,
     });
-    console.log(userInput);
+
+    setUserData((prevData) => {
+      return [...prevData, inputData];
+    });
   }
+
+  console.log(userData);
 
   return (
     <div>
       <Header />
       <div style={{ display: "flex" }}>
         <UserInput onSubmit={dataHandler} />
-        <VisitorManagement />
+        <VisitorManagement rows={userData} />
       </div>
     </div>
   );

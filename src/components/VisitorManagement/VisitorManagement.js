@@ -2,7 +2,7 @@ import classes from "./VisitorManagement.module.css";
 import { Checkbox, FormControlLabel, Button } from "@mui/material";
 import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
 
-const VisitorManagement = () => {
+const VisitorManagement = (props) => {
   const columns: GridColDef[] = [
     {
       field: "name",
@@ -30,34 +30,6 @@ const VisitorManagement = () => {
     },
   ];
 
-  const rows = [
-    {
-      id: 1,
-      name: "Prabodhan Fitzgerald",
-      email: "fitzgerald@mail.com",
-      select: "Marketing",
-    },
-    { id: 2, name: "Hiro Joyce", email: "joyce@mail.com", select: "IT" },
-    {
-      id: 3,
-      name: "Lloyd Jefferson",
-      email: "jefferson@mail.com",
-      select: "Sales",
-    },
-    {
-      id: 4,
-      name: "Ceiran Mayo",
-      email: "mayo@mail.com",
-      select: "Management",
-    },
-    {
-      id: 5,
-      name: "Thumbkino James",
-      email: "james@mail.com",
-      select: "Accounting",
-    },
-  ];
-
   return (
     <div className={classes.content}>
       <div className={classes.heading}>
@@ -77,7 +49,7 @@ const VisitorManagement = () => {
       </div>
       <div>
         <DataGrid
-          rows={rows}
+          rows={props.rows}
           columns={columns}
           sx={{
             width: "1400px",
