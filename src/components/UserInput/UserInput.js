@@ -21,6 +21,11 @@ const UserInput = (props) => {
   const submitHandler = (event) => {
     event.preventDefault();
     props.onSubmit(userInput);
+    setUserInput({
+      name: "",
+      email: "",
+      field: "",
+    });
   };
 
   const resetHandler = (event) => {

@@ -11,26 +11,26 @@ function App() {
 
   const dataHandler = (userInput) => {
     setUserInput(userInput);
+    handleAddUser();
+  };
+
+  const handleRemove = (updatedRows) => {
+    setUserData(updatedRows);
   };
 
   const inputData = [];
 
-  if (userInput) {
-    const name = userInput.name;
-    const email = userInput.email;
-    const field = userInput.field;
-
-    inputData.push({
-      id: Math.random(),
-      name: name,
-      email: email,
-      field: field,
-    });
-
-    setUserData((prevData) => {
-      return [...prevData, inputData];
-    });
-  }
+  const handleAddUser = () => {
+    if (userInput) {
+      const name = userInput.name;
+      const email = userInput.email;
+      const field = userInput.field;
+  
+      setUserData((prevData) => {
+        return [...prevData, { id: Math.random(), name: name, email: email, field: field }];
+      });
+    }
+  };
 
   console.log(userData);
 
@@ -39,7 +39,7 @@ function App() {
       <Header />
       <div style={{ display: "flex" }}>
         <UserInput onSubmit={dataHandler} />
-        <VisitorManagement rows={userData} />
+        <VisitorManagement rows={userData} onRemove={handleRemove}/>
       </div>
     </div>
   );

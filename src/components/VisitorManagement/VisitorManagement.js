@@ -1,8 +1,11 @@
 import classes from "./VisitorManagement.module.css";
 import { Checkbox, FormControlLabel, Button } from "@mui/material";
 import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
+import { useState } from "react";
 
 const VisitorManagement = (props) => {
+  const [selectedRows, setSelectedRows] = useState([]);
+
   const columns: GridColDef[] = [
     {
       field: "name",
@@ -30,6 +33,13 @@ const VisitorManagement = (props) => {
     },
   ];
 
+  const handleRemoveClick = () => {
+    
+    const updatedRows = props.rows.filter((row) => !selectedRows.includes(row.id));
+    props.onRemove(updatedRows);
+    setSelectedRows([]);
+  };
+
   return (
     <div className={classes.content}>
       <div className={classes.heading}>
@@ -43,6 +53,7 @@ const VisitorManagement = (props) => {
             color: "white",
             background: "#D32F2F",
           }}
+          onClick={handleRemoveClick}
         >
           Remove
         </Button>
@@ -57,6 +68,9 @@ const VisitorManagement = (props) => {
           checkboxSelection
           disableColumnMenu={true}
           hideFooter
+          onSelectionModelChange={(newSelection) => {
+            setSelectedRows(newSelection);
+          }}
         />
       </div>
     </div>
