@@ -11,7 +11,7 @@ function App() {
 
   const dataHandler = (userInput) => {
     setUserInput(userInput);
-    handleAddUser();
+    handleAddUser(userInput);
   };
 
   const handleRemove = (updatedRows) => {
@@ -20,19 +20,18 @@ function App() {
 
   const inputData = [];
 
-  const handleAddUser = () => {
-    if (userInput) {
-      const name = userInput.name;
-      const email = userInput.email;
-      const field = userInput.field;
+  const handleAddUser = (newUser) => {
+    if (newUser) {
+      const name = newUser.name;
+      const email = newUser.email;
+      const field = newUser.field;
   
       setUserData((prevData) => {
         return [...prevData, { id: Math.random(), name: name, email: email, field: field }];
       });
+      setUserInput(null);
     }
   };
-
-  console.log(userData);
 
   return (
     <div>

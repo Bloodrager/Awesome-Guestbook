@@ -34,8 +34,9 @@ const VisitorManagement = (props) => {
   ];
 
   const handleRemoveClick = () => {
-    
-    const updatedRows = props.rows.filter((row) => !selectedRows.includes(row.id));
+    const updatedRows = props.rows.filter(
+      (row) => !selectedRows.includes(row.id)
+    );
     props.onRemove(updatedRows);
     setSelectedRows([]);
   };
@@ -70,7 +71,9 @@ const VisitorManagement = (props) => {
           hideFooter
           onSelectionModelChange={(newSelection) => {
             setSelectedRows(newSelection);
+            console.log(newSelection); 
           }}
+          key={props.rows.map((row) => row.id).join(",")}
         />
       </div>
     </div>
