@@ -8,7 +8,6 @@ import {
   MenuItem,
   Checkbox,
   FormControlLabel,
-  ButtonGroup,
 } from "@mui/material";
 
 const UserInput = (props) => {

@@ -1,10 +1,11 @@
 import classes from "./VisitorManagement.module.css";
 import { Checkbox, FormControlLabel, Button } from "@mui/material";
-import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
+import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import { useState } from "react";
 
 const VisitorManagement = (props) => {
   const [selectedRows, setSelectedRows] = useState([]);
+  const [isCheckboxChecked, setIsCheckboxChecked] = useState(false);
 
   const columns: GridColDef[] = [
     {
@@ -34,18 +35,29 @@ const VisitorManagement = (props) => {
   ];
 
   const handleRemoveClick = () => {
-    const updatedRows = props.rows.filter(
-      (row) => !selectedRows.includes(row.id)
-    );
-    props.onRemove(updatedRows);
-    setSelectedRows([]);
+    if (isCheckboxChecked) {
+      const updatedRows = props.rows.filter(
+        (row) => !selectedRows.includes(row.id)
+      );
+      props.onRemove(updatedRows);
+      setSelectedRows([]);
+    } else {
+      alert("Please check the checkbox to confirm removal.");
+    }
   };
 
   return (
     <div className={classes.content}>
       <div className={classes.heading}>
         <h1>Visitor management</h1>
-        <FormControlLabel control={<Checkbox />} />
+        <FormControlLabel
+          control={
+            <Checkbox
+              checked={isCheckboxChecked}
+              onChange={(event) => setIsCheckboxChecked(event.target.checked)}
+            />
+          }
+        />
         <Button
           type="submit"
           variant="contained"
@@ -69,11 +81,10 @@ const VisitorManagement = (props) => {
           checkboxSelection
           disableColumnMenu={true}
           hideFooter
-          onSelectionModelChange={(newSelection) => {
+          onRowSelectionModelChange={(newSelection) => {
             setSelectedRows(newSelection);
             console.log(newSelection);
           }}
-          key={props.rows.map((row) => row.id).join(",")}
         />
       </div>
     </div>

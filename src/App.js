@@ -18,6 +18,13 @@ function App() {
     setUserData(updatedRows);
   };
 
+  const randomId = (min, max) => {
+    const randomDecimal = Math.random();
+    const scaleRandom = randomDecimal * (max - min + 1);
+    const randomWholeNumber = Math.floor(scaleRandom) + min;
+    return randomWholeNumber;
+  };
+
   const handleAddUser = (newUser) => {
     if (newUser) {
       const name = newUser.name;
@@ -27,7 +34,7 @@ function App() {
       setUserData((prevData) => {
         return [
           ...prevData,
-          { id: Math.random(), name: name, email: email, field: field },
+          { id: randomId(6, 999), name: name, email: email, field: field },
         ];
       });
       setUserInput(null);
